@@ -31,12 +31,20 @@ export class Messenger extends Component {
 
   componentDidUpdate() {
     setTimeout(() => {
-      if (this.state.messages[this.state.messages.length-1].author !== 'Bot') {
+      const lastMessage = this.state.messages[this.state.messages.length-1];
+      if (lastMessage.author !== 'Bot') {
         this.setState({
-          messages: this.state.messages.concat([{text: 'Привет! Бот на связи!', author: 'Bot'}]),
+          messages: this.state.messages.concat([{text: `Привет, ${lastMessage.author}. Бот на связи!`, author: 'Bot'}]),
         })
       }
     }, 1000)
+  }
+
+  handleMessageSend = (message) => {
+    console.log(message);
+    this.setState({
+      messages: this.state.messages.concat([{text: message.text, author: message.author}]),
+    })
   }
 
   render() {
@@ -44,9 +52,8 @@ export class Messenger extends Component {
 
     return (
       <div>
-        <ul>
-          {messages.map((message, idx) => <li key={idx}>{message.author}: {message.text}</li>)}
-        </ul>
+        <MessagesList messages={messages}/>
+        <MessageForm onSend={this.handleMessageSend} />
       </div>
     );
   }
