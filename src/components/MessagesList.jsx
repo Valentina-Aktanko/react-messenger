@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Message } from './Message';
+import { Message, messageType } from './Message';
 
 export class MessagesList extends Component {
 
   static propTypes = {
-    message: PropTypes.array,
+    items: PropTypes.arrayOf(
+      PropTypes.shape(messageType),
+    ),
   }
 
   render() {
-    const { messages } = this.props;
+    const { items } = this.props;
 
     return (
       <ul>
-        {messages.map((message, idx) => 
-          <Message key={idx} author={message.author} text={message.text} />
-        )}
+        {items.map((item, idx) => <Message key={idx} {...item} />)}
       </ul>
     );
   }
