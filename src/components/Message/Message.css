@@ -2,3 +2,11 @@
   background-color: aquamarine;
   width: percentage(1/2);
 }
+
+.message-owner {
+  align-self: flex-end;
+}
+
+.message-companion {
+  align-self: flex-start;
+}
