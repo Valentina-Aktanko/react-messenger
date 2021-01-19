@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import { MessagesList } from './MessagesList';
-import { MessageForm } from './MessageForm';
+import { MessagesList } from 'components/MessagesList';
+import { MessageForm } from 'components/MessageForm';
 
 const messages = ['Привет', 'Как дела?', 'Как настроение?', 'Как погода?'];
 
@@ -14,7 +14,7 @@ export class Messenger extends Component {
   componentDidUpdate() {
     const author = this.state.messages[this.state.messages.length-1].author;
 
-    if (lastMessage.author !== 'Bot') {
+    if (author !== 'Bot') {
       setTimeout(() => {
         this.setState({
           messages: this.state.messages.concat([{text: `Привет, ${author}! Бот на связи.`, author: 'Bot'}]),

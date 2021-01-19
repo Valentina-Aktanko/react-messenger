@@ -9,12 +9,19 @@ export const messageType = {
 }
 
 export class Message extends Component {
+  
+  get direction() {
+    return this.props.author === 'Bot' ? 'start' : 'end';
+  }
 
   render() {
     const { author, text } = this.props;
 
     return(
-      <li>{author}: {text}</li>
+      <li className="message" style={{ alignSelf: `flex-${this.direction}`}}>
+        <p>{text}</p>
+        <p className="sender">{author}</p>
+      </li>
     );
   }
 
