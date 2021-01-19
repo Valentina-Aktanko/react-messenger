@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import TextField from '@material-ui/core/TextField';
+import IconButton from '@material-ui/core/IconButton';
+import SendIcon from '@material-ui/icons/Send';
 
 export class MessageForm extends Component {
 
@@ -41,23 +44,36 @@ export class MessageForm extends Component {
 
     return(
       <div>
-        <input 
-          type="text" 
-          name="author" 
+        <TextField 
+          id="standard-basic" 
+          name="author"
           value={author} 
-          placeholder="Author" 
+          label="Author"
           onChange={this.handleInputChange}
         />
-        <br/>
-        <textarea 
+        {/* <br /> */}
+        <TextField 
           name="text" 
           value={text} 
-          placeholder = "Text"
+          label = "Text"
           onKeyDown={this.handleEnterDown}
           onChange={this.handleInputChange} 
-        ></textarea>
-        <br/>
-        <button onClick={this.handleMessageSend}>Send</button>
+        />
+        {/* <br /> */}
+        {/* <Button 
+          variant="contained" 
+          color="primary"
+          onClick={this.handleMessageSend}
+        >
+          Send
+        </Button> */}
+        <IconButton 
+          aria-label="send" 
+          variant="contained" 
+          color="primary"
+          onClick={this.handleMessageSend}>
+          <SendIcon />
+        </IconButton>
       </div>
     );
   }
