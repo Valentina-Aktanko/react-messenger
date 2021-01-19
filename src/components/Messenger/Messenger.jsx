@@ -1,9 +1,9 @@
+import './Messenger.css';
+
 import React, { Component } from 'react';
 
 import { MessagesList } from 'components/MessagesList';
 import { MessageForm } from 'components/MessageForm';
-
-const messages = ['Привет', 'Как дела?', 'Как настроение?', 'Как погода?'];
 
 export class Messenger extends Component {
 
@@ -33,7 +33,7 @@ export class Messenger extends Component {
     const { messages } = this.state;
 
     return (
-      <div>
+      <div className="messenger">
         <MessagesList items={messages} />
         <MessageForm onSend={this.handleMessageSend} />
       </div>

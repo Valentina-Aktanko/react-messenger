@@ -22,6 +22,12 @@ export class MessageForm extends Component {
     }
   }
 
+  handleEnterDown = (event) => {
+    if (event.ctrlKey && event.keyCode === 13) {
+      this.handleMessageSend();
+    }
+  }
+
   handleInputChange = (event) => {
     const fieldName = event.target.name;
 
@@ -47,6 +53,7 @@ export class MessageForm extends Component {
           name="text" 
           value={text} 
           placeholder = "Text"
+          onKeyDown={this.handleEnterDown}
           onChange={this.handleInputChange} 
         ></textarea>
         <br/>

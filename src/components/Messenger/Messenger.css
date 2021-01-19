@@ -1,0 +1,9 @@
+.messenger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  margin: auto;
+  width: 90%;
+  height: 100%;
+}

@@ -26,7 +26,7 @@ export class Message extends Component {
     return(
       <li className={classes}>
         <p>{text}</p>
-        <p className="sender">{author}</p>
+        <p className="message-sender">{author}</p>
       </li>
     );
   }
