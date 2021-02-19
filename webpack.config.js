@@ -2,9 +2,11 @@ const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); 
+const { sources } = require('webpack');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src', 'index.jsx'),
+  devtool: 'eval-source-map',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
