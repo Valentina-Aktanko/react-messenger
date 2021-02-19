@@ -1,0 +1,4 @@
+.chat-list {
+  grid-area: chatlist;
+  width: 30%;
+}
