@@ -57,7 +57,7 @@ export class Messenger extends Component {
 
     chat.messages = messages;
 
-    this.setState(({ messages }) => ({
+    this.setState(() => ({
       chats: {
         ...this.state.chats,
         [chatId]: chat,
