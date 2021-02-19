@@ -8,7 +8,7 @@ import { MessageForm } from 'components/MessageForm';
 export class Messenger extends Component {
 
   state = {
-    chats: {
+    chats: { // hash map
       '1': {
         id: 1,
         messages: [
@@ -32,27 +32,37 @@ export class Messenger extends Component {
         ],
         name: 'Chat 3',
       },
-    }
+    },
+    messages: [],
   }
 
   componentDidUpdate() {
-    // if(this.state.messages.length) {
-    //   const author = this.state.messages[this.state.messages.length-1].author;
+    if(this.messages.length) {
+      const { author } = this.messages[this.messages.length-1];
   
-    //   if (author !== 'Bot') {
-    //     setTimeout(() => {
-    //       this.setState({
-    //         messages: this.state.messages.concat([{text: `Привет, ${author}! Бот на связи.`, author: 'Bot'}]),
-    //       })
-    //     }, 1000)
-    //   }
-    // }
+      if (author !== 'Bot') {
+        setTimeout(() => {
+          this.handleMessageSend({ text: `Привет, ${author}! Бот на связи.`, author: 'Bot'})
+        }, 1000)
+      }
+    }
   }
 
   handleMessageSend = (message) => {
+    const { chats } = this.state;
+    const { chatId } = this.props;
+
+    const chat = chats[chatId];
+    const messages = this.messages.concat([message]);
+
+    chat.messages = messages;
+
     this.setState(({ messages }) => ({
-      messages: messages.concat([message]),
-    }))
+      chats: {
+        ...this.state.chats,
+        [chatId]: chat,
+      }
+    }));
   }
 
   get messages() {
